@@ -24,6 +24,9 @@
 # GPS
 BOARD_GPS_SET_PRIVACY := true
 
+# Dual boot recovery
+TARGET_RECOVERY_INITRC := device/samsung/t0lte/recovery/root/init.rc
+
 # inherit from the proprietary version
 -include vendor/samsung/t0lte/BoardConfigVendor.mk
 
