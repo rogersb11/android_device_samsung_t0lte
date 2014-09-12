@@ -41,6 +41,9 @@ else
 TARGET_KERNEL_CONFIG := cm_t0lte_defconfig
 endif
 
+# F2FS filesystem
+TARGET_USERIMAGES_USE_F2FS := true
+
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/t0lte/rootdir/fstab.smdk4x12
 RECOVERY_FSTAB_VERSION := 2
