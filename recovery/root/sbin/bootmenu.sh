@@ -25,7 +25,8 @@ F2FS=0
 SYSTEMDEV="/dev/block/mmcblk0p13"
 DATADEV="/dev/block/mmcblk0p16"
 CACHEDEV="/dev/block/mmcblk0p12"
-HIDDENDEV="/dev/block/mmcblk0p14"
+# Use a common /cache
+HIDDENDEV="/dev/block/mmcblk0p12"
 
 # Galaxy Tab 3 T31x block device
 # Don't use /dev/block/platform/*/by-name/* symlink!
@@ -88,12 +89,18 @@ if [ "$DEFAULTROM" == "1" ]; then
 
   # Associate /dev/block/loop0 with system.img
   losetup /dev/block/loop0 /.secondrom/media/.secondrom/system.img
-  # Remove default /system and /cache block device
-  rm -f $SYSTEMDEV $CACHEDEV
+  # Remove default /system block device
+  rm -f $SYSTEMDEV
   # Symlink /system block device to /dev/block/loop0 for transparent operation
   ln -s /dev/block/loop0 $SYSTEMDEV
-  # Symlink /cache block device to /preload block device for transparent operation
-  ln -s $HIDDENDEV $CACHEDEV
+
+  # Only if /preload partition as /cache partition
+  if [ "$HIDDENDEV" != "$CACHEDEV" ]; then
+    # Remove default /cache block device
+    rm -f $CACHEDEV
+    # Symlink /cache block device to /preload block device for transparent operation
+    ln -s $HIDDENDEV $CACHEDEV
+  fi
 
   # Bind mount /.secondrom/media/.secondrom/data to /data for transparent operation
   # no real block device and always locked
