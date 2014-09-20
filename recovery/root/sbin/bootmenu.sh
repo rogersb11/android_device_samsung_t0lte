@@ -20,26 +20,8 @@ format_to_f2fs() {
 DEFAULTROM=0
 F2FS=0
 
-# Galaxy Note 2 N7105 block device
-# Don't use /dev/block/platform/*/by-name/* symlink!
-SYSTEMDEV="/dev/block/mmcblk0p13"
-DATADEV="/dev/block/mmcblk0p16"
-CACHEDEV="/dev/block/mmcblk0p12"
-# Use a common /cache
-HIDDENDEV="/dev/block/mmcblk0p12"
-
-# Galaxy Tab 3 T31x block device
-# Don't use /dev/block/platform/*/by-name/* symlink!
-# SYSTEMDEV="/dev/block/mmcblk0p20"
-# DATADEV="/dev/block/mmcblk0p21"
-# CACHEDEV="/dev/block/mmcblk0p19"
-# HIDDENDEV="/dev/block/mmcblk0p16"
-
-# Galaxy Tab 2 block device
-# SYSTEMDEV="/dev/block/mmcblk0p9"
-# DATADEV="/dev/block/mmcblk0p10"
-# CACHEDEV="/dev/block/mmcblk0p7"
-# HIDDENDEV="/dev/block/mmcblk0p11"
+# Import dual boot environment setup
+. /res/misc/env.sh
 
 # Set CPU governor, NEXT kernel for Galaxy Tab 2 default governor is performance
 # echo interactive > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
@@ -49,6 +31,7 @@ HIDDENDEV="/dev/block/mmcblk0p12"
 
 # Waiting for kernel init process
 sleep 1
+mkdir -p /data
 mkdir /.secondrom
 
 # Mount /data partition as ext4 or f2fs, will never be unmounted in 2nd recovery
@@ -81,11 +64,12 @@ if [ "$DEFAULTROM" == "1" ]; then
 
   # 2nd recovery spesific files
   mv -f /res/misc/recovery.fstab.2 /etc/recovery.fstab
-  rm -f /sbin/mount /sbin/umount
   mv -f /res/misc/mount.2 /sbin/mount
   mv -f /res/misc/umount.2 /sbin/umount
   mv -f /res/misc/virtual_keys.2.png /res/images/virtual_keys.png
-  chmod 755 /sbin/mount /sbin/umount
+  # Remove 1st recovery files
+  rm -f /res/misc/mount
+  rm -f /res/misc/umount
 
   # Associate /dev/block/loop0 with system.img
   losetup /dev/block/loop0 /.secondrom/media/.secondrom/system.img
@@ -94,7 +78,7 @@ if [ "$DEFAULTROM" == "1" ]; then
   # Symlink /system block device to /dev/block/loop0 for transparent operation
   ln -s /dev/block/loop0 $SYSTEMDEV
 
-  # Only if /preload partition as /cache partition
+  # Only if /preload partition as /cache partition (a different cache)
   if [ "$HIDDENDEV" != "$CACHEDEV" ]; then
     # Remove default /cache block device
     rm -f $CACHEDEV
@@ -123,10 +107,13 @@ else
   fi
 
   # 1st recovery spesific files
-  rm -f /sbin/mount /sbin/umount
   mv -f /res/misc/mount /sbin/mount
   mv -f /res/misc/umount /sbin/umount
-  chmod 755 /sbin/mount /sbin/umount
+  # Remove 2nd recovery files
+  rm -f /res/misc/recovery.fstab.2
+  rm -f /res/misc/mount.2
+  rm -f /res/misc/umount.2
+  rm -f /res/misc/virtual_keys.2.png
 
   # Create /data/philz-touch directory if not available
   if [ ! -f /.secondrom/philz-touch/philz-touch_6.ini ]; then
@@ -136,3 +123,5 @@ else
   # Unmount /data
   busybox umount -f /.secondrom
 fi
+
+chmod 755 /sbin/mount /sbin/umount
