@@ -1,5 +1,5 @@
 # Release name
-PRODUCT_RELEASE_NAME := t0lteatt
+PRODUCT_RELEASE_NAME := t0lte
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
@@ -15,10 +15,10 @@ $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := t0lteatt
+PRODUCT_DEVICE := t0lte
 PRODUCT_NAME := cm_t0lte
 PRODUCT_BRAND := samsung
-PRODUCT_MODEL := SGH-I317
+PRODUCT_MODEL := GT-N7105
 PRODUCT_MANUFACTURER := samsung
 
 # Set build fingerprint / ID / Product Name ect.
