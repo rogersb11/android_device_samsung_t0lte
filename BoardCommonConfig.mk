@@ -34,7 +34,7 @@ TARGET_KERNEL_SOURCE := kernel/samsung/smdk4x12
 ifeq ($(TARGET_VOICE_TECH), cdma)
 TARGET_KERNEL_CONFIG := cyanogenmod_t0ltecdma_defconfig
 else
-TARGET_KERNEL_CONFIG := cm_t0lte_defconfig
+TARGET_KERNEL_CONFIG := cyanogenmod_t0lte_defconfig
 endif
 
 # Recovery
