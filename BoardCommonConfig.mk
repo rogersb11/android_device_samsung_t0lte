@@ -32,10 +32,7 @@ COMMON_GLOBAL_CFLAGS += -DCAMERA_WITH_CITYID_PARAM
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
 ifeq ($(TARGET_VOICE_TECH), cdma)
-TARGET_KERNEL_CONFIG := cyanogenmod_t0ltecdma_defconfig
-else
-TARGET_KERNEL_CONFIG := cyanogenmod_t0lte_defconfig
-endif
+TARGET_KERNEL_CONFIG := custom_t0lte_defconfig
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/t0lte/rootdir/fstab.smdk4x12
@@ -79,3 +76,17 @@ BOARD_SEPOLICY_UNION += \
     wpa_supplicant.te \
     zygote.te
 
+# BlissPop Configs
+TARGET_TC_ROM := 4.8-linaro
+TARGET_TC_KERNEL := 4.8-sm
+BLISSIFY := true
+BLISS_O3 := true
+BLISS_STRICT := true
+BLISS_GRAPHITE := true
+BLISS_KRAIT := true
+BLISS_PIPE := true
+TARGET_GCC_VERSION_EXP := $(TARGET_TC_ROM)
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
+
+#SaberMod
+-include vendor/bliss/config/sm.mk
