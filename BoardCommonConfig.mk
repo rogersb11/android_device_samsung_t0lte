@@ -33,6 +33,7 @@ COMMON_GLOBAL_CFLAGS += -DCAMERA_WITH_CITYID_PARAM
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
 ifeq ($(TARGET_VOICE_TECH), cdma)
 TARGET_KERNEL_CONFIG := custom_t0lte_defconfig
+endif
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/t0lte/rootdir/fstab.smdk4x12
