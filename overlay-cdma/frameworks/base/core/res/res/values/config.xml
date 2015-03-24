@@ -197,7 +197,7 @@
     <integer name="config_deviceHardwareWakeKeys">65</integer> -->
     
     <!-- Boolean to enable Stylus gestures -->
-    <!--<bool name="config_stylusGestures">true</bool>-->
+    <bool name="config_stylusGestures">true</bool>
 
     <!-- Screen brightness when dozing. -->
     <integer name="config_screenBrightnessDoze">20</integer>
