@@ -22,5 +22,14 @@
         "repository": "NamelessRom/android_hardware_samsung",
         "target_path": "hardware/samsung",
         "revision": "n-2.0"
+    },
+    {
+        "remote": "github",
+        "repository": "DonkeyCoyote/proprietary_vendor_samsung",
+        "target_path": "vendor/samsung",
+        "revision": "android-5.0"
     }
+    
 ]
+
+DonkeyCoyote/proprietary_vendor_samsung
