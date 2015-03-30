@@ -25,9 +25,9 @@
     },
     {
         "remote": "github",
-        "repository": "DonkeyCoyote/proprietary_vendor_samsung",
+        "repository": "CrazyWeasel/proprietary_vendor_samsung",
         "target_path": "vendor/samsung",
-        "revision": "android-5.0"
+        "revision": "n-2.0"
     }
     
 ]
