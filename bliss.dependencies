@@ -1,9 +1,9 @@
 [
     {
-        "remote": "github",
-        "repository": "NamelessRom/android_device_samsung_smdk4412-common",
+        "remote": "lsd",
+        "repository": "android_device_samsung_smdk4412-common",
         "target_path": "device/samsung/smdk4412-common",
-        "revision": "n-2.0"
+        "revision": "lollipop"
     },
     {
         "remote": "github",
@@ -12,10 +12,10 @@
         "revision": "n-2.0"
     },
     {
-        "remote": "github",
-        "repository": "NamelessRom/android_kernel_samsung_smdk4412",
+        "remote": "lsd",
+        "repository": "android_kernel_samsung_smdk4412",
         "target_path": "kernel/samsung/smdk4412",
-        "revision": "n-2.0"
+        "revision": "lollipop"
     },
     {
         "remote": "github",
