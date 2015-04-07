@@ -78,18 +78,3 @@ BOARD_SEPOLICY_UNION += \
     wpa.te \
     wpa_supplicant.te \
     zygote.te
-
-# BlissPop Configs
-TARGET_TC_ROM := 4.8-linaro
-TARGET_TC_KERNEL := 4.8-sm
-BLISSIFY := true
-BLISS_O3 := true
-BLISS_STRICT := true
-BLISS_GRAPHITE := true
-BLISS_KRAIT := false
-BLISS_PIPE := true
-TARGET_GCC_VERSION_EXP := $(TARGET_TC_ROM)
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
-
-#SaberMod
--include vendor/bliss/config/sm.mk
