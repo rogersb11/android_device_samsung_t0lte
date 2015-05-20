@@ -1,0 +1,3 @@
+-keep class com.android.doze.t0lte.* {
+  *;
+}
