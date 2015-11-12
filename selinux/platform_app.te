@@ -1,2 +1,2 @@
-allow platform_app log_device:chr_file { write };
+allow platform_app log_device:chr_file { open write };
 allow platform_app kernel:system { module_request };

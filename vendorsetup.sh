@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2015 The Android Open Source Project
+# Copyright (C) 2015 Brett Rogers
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,7 +13,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_t0lte.mk \
-    $(LOCAL_DIR)/aosp_t0lte.mk
+add_lunch_combo aosp_t0lte-userdebug
+add_lunch_combo aosp_t0lte-eng

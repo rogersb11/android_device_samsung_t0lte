@@ -13,4 +13,3 @@ allow init init:rawip_socket { create setopt write };
 #allow init_shell init:packet_socket { read write };
 allow init log_device:chr_file { write };
 allow init kernel:system { module_request };
-allow init system_file:file execute_no_trans;
